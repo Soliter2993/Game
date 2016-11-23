@@ -5,17 +5,19 @@ public class MiniPoker {
     public static int[] cardInHandBlack = new int[5];
 
     public static void main(String[] args) {
+        //Заполнили массив для временной работы(пока проект в разработке для быстрой проверки работоспособности
         cardInHandWhite[0] = 2;
         cardInHandWhite[1] = 2;
         cardInHandWhite[2] = 2;
         cardInHandWhite[3] = 3;
         cardInHandBlack[4] = 4;
-        
+
         cardInHandBlack[0] = 2;
         cardInHandBlack[1] = 2;
         cardInHandBlack[2] = 2;
         cardInHandBlack[3] = 3;
         cardInHandBlack[4] = 5;
+        
         Treatment treatment = new Treatment();
         ReTreatment reTreatment = new ReTreatment();
 
