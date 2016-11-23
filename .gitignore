@@ -1,8 +1,4 @@
-#Ignore all files in folder .idea
 .idea/
-#Ignore all files ending in .iml
+src/
 *.iml
-#Ignore all files whith name pom
-pom.*
-#Ignore all files ending in .txt
 *.txt
