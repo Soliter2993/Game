@@ -6,18 +6,18 @@ public class MiniPoker {
 
     public static void main(String[] args) {
         //Заполнили массив для временной работы(пока проект в разработке для быстрой проверки работоспособности
-        cardInHandWhite[0] = 2;
-        cardInHandWhite[1] = 2;
-        cardInHandWhite[2] = 2;
-        cardInHandWhite[3] = 3;
-        cardInHandBlack[4] = 4;
+        cardInHandWhite[0] = 6;
+        cardInHandWhite[1] = 6;
+        cardInHandWhite[2] = 6;
+        cardInHandWhite[3] = 2;
+        cardInHandWhite[4] = 8;
 
-        cardInHandBlack[0] = 2;
-        cardInHandBlack[1] = 2;
-        cardInHandBlack[2] = 2;
-        cardInHandBlack[3] = 3;
-        cardInHandBlack[4] = 5;
-        
+        cardInHandBlack[0] = 6;
+        cardInHandBlack[1] = 6;
+        cardInHandBlack[2] = 6;
+        cardInHandBlack[3] = 4;
+        cardInHandBlack[4] = 8;
+
         Treatment treatment = new Treatment();
         ReTreatment reTreatment = new ReTreatment();
 

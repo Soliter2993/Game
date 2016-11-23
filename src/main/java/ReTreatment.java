@@ -30,22 +30,59 @@ public class ReTreatment {
     String maxCard(){//Метод который определяем наивысшую карту у игроков если у них одинаковая комбинация
         int maxWhite = 0;
         int maxBlack = 0;
+        int minWhite = 0;
+        int minBlack = 0;
+        int midWhite = 0;
+        int midBlack = 0;
         for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){
             if (treatment.numberOfCardsWhite[x] == 1){
                 maxWhite = x;
             }
         }
-        for (int x = 0; x < treatment.kolichestvoCardBlack.length; x++){
-            if (treatment.kolichestvoCardBlack[x] == 1){
+        for (int x = 0; x < treatment.numberOfCardsBlack.length; x++){
+            if (treatment.numberOfCardsBlack[x] == 1){
                 maxBlack = x;
             }
         }
         if (maxBlack < maxWhite){
             howWin = "White Gamer is won\nHe have highest card of: " + maxWhite;
-        }else if (maxBlack > maxWhite){
+        }else if (maxBlack > maxWhite) {
             howWin = "Black Gamer is won\nHe have highest card of: " + maxBlack;
-        }else
-            howWin = "Dead Heat";
+        }else if (maxBlack == maxWhite) {
+            for (int x = treatment.numberOfCardsWhite.length - 1; x > 0; x--) {
+                if (treatment.numberOfCardsWhite[x] == 1) {
+                    minWhite = x;
+                }
+            }
+            for (int x = treatment.numberOfCardsBlack.length - 1; x > 0; x--) {
+                if (treatment.numberOfCardsBlack[x] == 1) {
+                    minBlack = x;
+                }
+            }
+            if (minBlack < minWhite) {
+                howWin = "White Gamer is won\nHe have highest card of: " + minWhite;
+            } else if (minBlack > minWhite) {
+                howWin = "Black Gamer is won\nHe have highest card of: " + minBlack;
+            } else if (minBlack == minWhite) {
+                for (int x = maxWhite; x > minWhite; x--) {
+                    if (treatment.numberOfCardsWhite[x] == 1) {
+                        midWhite = x;
+                    }
+                }
+                for (int x = maxBlack; x > minBlack; x--) {
+                    if (treatment.numberOfCardsBlack[x] == 1) {
+                        midBlack = x;
+                    }
+                }
+                if (midBlack < midWhite) {
+                    howWin = "White Gamer is won\nHe have highest card of: " + midWhite;
+                } else if (midBlack > midWhite) {
+                    howWin = "Black Gamer is won\nHe have highest card of: " + midBlack;
+                } else {
+                    howWin = "Dead Heat";
+                }
+            }
+        }
         return howWin;
     }
     //__________________________________________________________
@@ -60,9 +97,9 @@ public class ReTreatment {
             }
         }
         //Бежим по массиву в котором записаны все карты которые есть в коллоде причем карты которых нет у игрока будут записаны в индекс 0
-        for (int x = 0; x < treatment.kolichestvoCardBlack.length; x++) {//для черного игрока
+        for (int x = 0; x < treatment.numberOfCardsBlack.length; x++) {//для черного игрока
             //Ищем нашу пару, т.е. когда значение с индексом х будет равно 2 это и будет наша пара
-            if (treatment.kolichestvoCardBlack[x] == 2) {
+            if (treatment.numberOfCardsBlack[x] == 2) {
                 //записываем значение карты из пары в максимальное
                 maxBlack = x;
             }
@@ -86,8 +123,8 @@ public class ReTreatment {
                 maxWhite = x;
             }
         }
-        for (int x = 0; x < treatment.kolichestvoCardBlack.length; x++){
-            if (treatment.kolichestvoCardBlack[x] ==2){
+        for (int x = 0; x < treatment.numberOfCardsBlack.length; x++){
+            if (treatment.numberOfCardsBlack[x] ==2){
                 maxBlack = x;
             }
         }
@@ -101,8 +138,8 @@ public class ReTreatment {
                     maxWhite = x;
                 }
             }
-            for (int x = treatment.kolichestvoCardBlack.length - 1; x > 0; x--){
-                if (treatment.kolichestvoCardBlack[x] == 2){
+            for (int x = treatment.numberOfCardsBlack.length - 1; x > 0; x--){
+                if (treatment.numberOfCardsBlack[x] == 2){
                     maxBlack = x;
                 }
             }

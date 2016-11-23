@@ -65,14 +65,14 @@ public class Treatment {
         return resultWhite;
     }
     int resultBlack;
-    int[] kolichestvoCardBlack = new int[1 + 13];
+    int[] numberOfCardsBlack = new int[1 + 13];
     public int treatmentBlack(int[] cardInHands){
 
         for (int x : cardInHands){
-            kolichestvoCardBlack[x]++;
+            numberOfCardsBlack[x]++;
         }
         int[] kolichestvoPovtorCardBlack = new int[1 + 5];
-        for (int x : kolichestvoCardBlack){
+        for (int x : numberOfCardsBlack){
             kolichestvoPovtorCardBlack[x]++;
         }
 
