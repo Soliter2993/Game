@@ -11,24 +11,30 @@ public class ReTreatment {
         treatment.treatmentBlack(MiniPoker.cardInHandBlack);
         treatment.combinations();
         //ПРоверяем кто из игроков выиграл
-        if (treatment.resultWhite > treatment.resultBlack){
+        if (treatment.resultWhite == 0 || treatment.resultBlack == 0) {//Если у одного из игроков 5 одинаковых карт
+            howWin = "One of the Gamers has five same Cards";
+        }
+        else if (treatment.resultWhite > treatment.resultBlack){
             howWin = "White Gamer is won\nHe have combination: " + treatment.combinations.get(treatment.resultWhite);
-        }else if (treatment.resultWhite < treatment.resultBlack){
+        }else if (treatment.resultWhite < treatment.resultBlack) {
             howWin = "Black Gamer is won\nHe have combination: " + treatment.combinations.get(treatment.resultBlack);
             //Если у игроков одинаковые комбинации проверяем в какой комбинации бОльшая карта
         }else if (treatment.resultWhite == 2 && treatment.resultBlack == 2) {//Если у игроков комбинация из одной пары, проверяем в чьей паре бОльшая карта
             oneParis();
         }else if (treatment.resultWhite == 3 && treatment.resultBlack == 3) {//Если у игроков комбинация из двух пар, проверяем в чьей из пар бОльшая карта
             twoParis();
+        }else if (treatment.resultWhite == 4 && treatment.resultBlack == 4) {//Если у игроков 3 одинаковые карты
+            threeOfKind();
         }else if (treatment.resultWhite == 6 && treatment.resultBlack == 6) {//Если у игроков комбинация фулхаус
             fullHouse();
+        }else if (treatment.resultWhite == 7 && treatment.resultBlack == 7) {//Если у игроков комбинация 4 одинаковых карты
+            fourOfKind();
         }else {
             maxCard();
         }
         return howWin;
     }
     //_________________________________________________________
-
     String maxCard(){//Метод который определяем наивысшую карту у игроков если у них одинаковая комбинация
         int maxWhite = 0;
         int maxBlack = 0;
@@ -86,9 +92,8 @@ public class ReTreatment {
             }
         }
         return howWin;
-    }
-    //__________________________________________________________
-
+    }//1;5
+    //_________________________________________________________
     String oneParis(){//Метод который вычисляет кто из игроков победил если у обоих по одной паре
         //Бежим по массиву в котором записаны все карты которые есть в коллоде причем карты которых нет у игрока будут записаны в индекс 0
         for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){//для белого игрока
@@ -116,9 +121,8 @@ public class ReTreatment {
             howWin = "Dead Heat";
         }
         return howWin;
-    }
-    //_________________________________________________________________________
-
+    }//2
+    //_________________________________________________________
     String twoParis(){//Метод который вычисляет кто из игроков победил если у обоих по 3 одинаковых карты
         for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){
             if (treatment.numberOfCardsWhite[x] == 2){
@@ -156,7 +160,29 @@ public class ReTreatment {
             }
         }
         return howWin;
-    }
+    }//3
+    //_________________________________________________________
+    String threeOfKind(){
+        for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){
+            if (treatment.numberOfCardsWhite[x] == 3){
+                maxWhite = x;
+            }
+        }
+        for (int x = 0; x < treatment.numberOfCardsBlack.length; x++){
+            if (treatment.numberOfCardsBlack[x] == 3){
+                maxBlack = x;
+            }
+        }
+        if (maxBlack < maxWhite){
+            howWin = "White Gamer is won\nHe have Paris of: " + maxWhite;
+        }else if (maxBlack > maxWhite) {
+            howWin = "Black Gamer is won\nHe have Paris of: " + maxBlack;
+        }else if (maxBlack == maxWhite){
+            maxCard();
+        }
+        return howWin;
+    }//4
+    //_________________________________________________________
     String fullHouse(){
         for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){
             if (treatment.numberOfCardsWhite[x] == 3){
@@ -176,7 +202,29 @@ public class ReTreatment {
             oneParis();
         }
         return howWin;
-    }
+    }//6
+    //_________________________________________________________
+    String fourOfKind(){
+        for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){
+            if (treatment.numberOfCardsWhite[x] == 4){
+                maxWhite = x;
+            }
+        }
+        for (int x = 0; x < treatment.numberOfCardsBlack.length; x++){
+            if (treatment.numberOfCardsBlack[x] == 4){
+                maxBlack = x;
+            }
+        }
+        if (maxBlack < maxWhite){
+            howWin = "White Gamer is won\nHe have Paris of: " + maxWhite;
+        }else if (maxBlack > maxWhite) {
+            howWin = "Black Gamer is won\nHe have Paris of: " + maxBlack;
+        }else if (maxBlack == maxWhite){
+            maxCard();
+        }
+        return howWin;
+    }//7
+    //_________________________________________________________
 }
 
 

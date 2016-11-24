@@ -6,12 +6,12 @@ public class Treatment {
     public void combinations(){
         combinations.put(0, "Imposible");
         combinations.put(1, "Nothing");
-        combinations.put(2, "One Paris");// Одна пара //+
-        combinations.put(3, "Two Paris");// Две пары //+
-        combinations.put(4, "Three of Kind");// Три одинаковые карты //+
+        combinations.put(2, "One Paris");// Одна пара
+        combinations.put(3, "Two Paris");// Две пары
+        combinations.put(4, "Three of Kind");// Три одинаковые карты
         combinations.put(5, "Straight");//5 последовательных (3,4,5,6,7 or 6,8,9,7,5)
-        combinations.put(6, "Full House");//Три одинаковые карты и пара //+
-        combinations.put(7, "Four of Kind");//Четыри одинаковые карты //
+        combinations.put(6, "Full House");//Три одинаковые карты и пара
+        combinations.put(7, "Four of Kind");//Четыри одинаковые карты
 
     }
     int resultWhite;
