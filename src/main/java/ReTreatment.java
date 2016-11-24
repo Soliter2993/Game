@@ -18,9 +18,11 @@ public class ReTreatment {
             //Если у игроков одинаковые комбинации проверяем в какой комбинации бОльшая карта
         }else if (treatment.resultWhite == 2 && treatment.resultBlack == 2) {//Если у игроков комбинация из одной пары, проверяем в чьей паре бОльшая карта
             oneParis();
-        }else if (treatment.resultWhite == 3 && treatment.resultBlack == 3){//Если у игроков комбинация из двух пар, проверяем в чьей из пар бОльшая карта
+        }else if (treatment.resultWhite == 3 && treatment.resultBlack == 3) {//Если у игроков комбинация из двух пар, проверяем в чьей из пар бОльшая карта
             twoParis();
-        } else {
+        }else if (treatment.resultWhite == 6 && treatment.resultBlack == 6) {//Если у игроков комбинация фулхаус
+            fullHouse();
+        }else {
             maxCard();
         }
         return howWin;
@@ -152,6 +154,26 @@ public class ReTreatment {
             }else{
                 howWin = "Dead Heat";
             }
+        }
+        return howWin;
+    }
+    String fullHouse(){
+        for (int x = 0; x < treatment.numberOfCardsWhite.length; x++){
+            if (treatment.numberOfCardsWhite[x] == 3){
+                maxWhite = x;
+            }
+        }
+        for (int x = 0; x < treatment.numberOfCardsBlack.length; x++){
+            if (treatment.numberOfCardsBlack[x] == 3){
+                maxBlack = x;
+            }
+        }
+        if (maxBlack < maxWhite){
+            howWin = "White Gamer is won\nHe have Paris of: " + maxWhite;
+        }else if (maxBlack > maxWhite) {
+            howWin = "Black Gamer is won\nHe have Paris of: " + maxBlack;
+        }else if (maxBlack == maxWhite){
+            oneParis();
         }
         return howWin;
     }
